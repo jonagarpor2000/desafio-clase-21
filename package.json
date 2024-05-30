@@ -1,0 +1,32 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "Refactor de login",
+  "type": "module",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonagarpor2000/desafio-clase-21.git"
+  },
+  "keywords": [],
+  "author": "Jonathan Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonagarpor2000/desafio-clase-21/issues"
+  },
+  "homepage": "https://github.com/jonagarpor2000/desafio-clase-21#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.4.0",
+    "mongoose-paginate-v2": "^1.8.1"
+  }
+}

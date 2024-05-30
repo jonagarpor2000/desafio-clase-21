@@ -1,0 +1,25 @@
+<a href="/api/sessions/logout" class="btn btn-outline-danger">Logout</a>
+<h1>Welcome to Product List</h1>
+<div>
+{{#each products.docs}}
+<p> Titulo: {{products.title}}</p>
+<p> Descripcion: {{this.description}}</p>
+<p> Precio: {{price}}</p>
+<p> Estado: {{status}}</p>
+<p> Categoria: {{category}}</p>
+<p> Thumbnail: {{thumbnail}}</p>
+<p> Codigo de producto: {{code}}</p>
+<p> Stock: {{stock}}</p>
+<button>Agregar al carrito</button>
+<hr></hr>
+{{/each}}
+
+{{#if products.hasPrevPage}}
+    <a href="{{products.prevLink}}">Anterior</a>
+{{/if}}
+<label>{{products.page}}</label>
+{{#if products.hasNextPage}}
+    <a href="{{products.nextLink}}">Siguiente</a>
+{{/if}}
+</div>
+

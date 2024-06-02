@@ -3,6 +3,7 @@ import {Router} from 'express'
 import { UsersManagerMongo } from '../../dao/usrMg_db.js'
 import { auth } from '../../middlewares/auth.middleware.js'
 import { createHash } from '../../utils/bcrypt.js'
+import passport from 'passport'
 
 
 export const sessionsRouter = Router()
@@ -33,6 +34,8 @@ sessionsRouter.post('/register', async (req, res) => {
         res.status(401).send({status: 'error', error: 'error al registrar usuario'})
     }
 })
+
+
 sessionsRouter.post('/login', (req, res) => {
     const {email, password} = req.body
 
@@ -46,6 +49,13 @@ sessionsRouter.post('/login', (req, res) => {
     console.log(req.session.user)
     res.redirect('/products')
 })
+
+
+sessionsRouter.get('/github', passport.authenticate('github',{scope: 'user:email'}),async(req,res)=>{} )
+sessionsRouter.get('/githubcallback', passport.authenticate('github',{failureRedirect:'/login'}),async(req,res)=>{
+    req.session.user = req.user
+    res.redirect('/products')
+} )
 
 
 sessionsRouter.get('/logout', (req, res) => {

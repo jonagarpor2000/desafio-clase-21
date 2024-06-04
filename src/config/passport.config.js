@@ -20,6 +20,7 @@ export const initializePassport = () =>{
             let user = await userService.getUserBy({email: profile._json.email})
             console.log(user)
             if(!user){
+                console.log('no user')
                 let newUser = {
                     first_name:profile._json.name.split(' ')[0],
                     last_name:profile._json.name.split(' ')[1],
@@ -27,6 +28,7 @@ export const initializePassport = () =>{
                     password:'',
                     role:'user'
                 }
+                console.log('hay user')
                 let result = await userService.createUser(newUser)
                 done(null,result)
             }else{
@@ -42,7 +44,7 @@ export const initializePassport = () =>{
     })
     passport.deserializeUser(async(id, done)=>{
         try {
-            const user = await userService.getUserById({_id:id})
+            const user = await userService.getUserBy({_id:id})
             done(null,user)
         } catch (error) {
             done(error)

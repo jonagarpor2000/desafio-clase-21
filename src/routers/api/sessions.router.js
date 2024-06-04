@@ -43,7 +43,7 @@ sessionsRouter.post('/login', async(req, res) => {
    
     req.session.user = {
         email,
-        admin: userFound.role
+        role: userFound.role
     }
 
     console.log(req.session.user)

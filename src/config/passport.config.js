@@ -1,7 +1,6 @@
 import passport from 'passport'
 import githubStrategy from 'passport-github2'
 import local from 'passport-local'
-import mongoose from 'mongoose'
 import { UsersManagerMongo } from '../dao/usrMg_db.js'
 
 

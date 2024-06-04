@@ -36,14 +36,14 @@ sessionsRouter.post('/register', async (req, res) => {
 })
 
 
-sessionsRouter.post('/login', (req, res) => {
+sessionsRouter.post('/login', async(req, res) => {
     const {email, password} = req.body
-
-    if(email !== 'adminCoder@coder.com' || password !== 'adminCod3r123') return res.send('login failed')
-
+    const userFound = await userService.getUserBy({email})
+    if(!isValidPassword(password,{password: userFound.password})) return res.status(401).send({status: 'error', error: 'login failed'})
+   
     req.session.user = {
         email,
-        admin: true
+        admin: userFound.role
     }
 
     console.log(req.session.user)

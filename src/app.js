@@ -5,6 +5,9 @@ import viewsRouter from './routers/viewsRouter.js'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import { connectDB } from '../config/index.js'
+import { initializePassport } from './config/passport.config.js'
+import passport from 'passport'
+
 
 
 const app = express()
@@ -28,6 +31,10 @@ app.use(session({
     saveUninitialized: true,
     
 }))
+
+initializePassport()
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.set('views',__dirname+'/views')
 app.set('view engine','hbs')

@@ -1,7 +1,8 @@
 import passport from 'passport'
 import githubStrategy from 'passport-github2'
 import local from 'passport-local'
-import { UsersManagerMongo } from '../dao/usrMg_db'
+import mongoose from 'mongoose'
+import { UsersManagerMongo } from '../dao/usrMg_db.js'
 
 
 
@@ -17,7 +18,8 @@ export const initializePassport = () =>{
     },async (accessToken,refreshToken,profile,done)=>{
         try {
             console.log(profile)
-            let user = await userService.getUserBy({email:profile._json.email}) 
+            let user = await userService.getUserBy({email: profile._json.email})
+            console.log(user)
             if(!user){
                 let newUser = {
                     first_name:profile._json.name.split(' ')[0],

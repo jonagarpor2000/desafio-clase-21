@@ -2,7 +2,7 @@
 import {Router} from 'express'
 import { UsersManagerMongo } from '../../dao/usrMg_db.js'
 import { auth } from '../../middlewares/auth.middleware.js'
-import { createHash } from '../../utils/bcrypt.js'
+import { createHash, isValidPassword } from '../../utils/bcrypt.js'
 import passport from 'passport'
 
 
